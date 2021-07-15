@@ -1,1 +1,1 @@
-FROM networkstatic/iperf3:latest
+FROM centos:latest
