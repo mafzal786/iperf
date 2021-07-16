@@ -9,11 +9,11 @@
 ## Create a new build configuration by running the following
 #### oc new-build --name iperf --binary
 
-## Build the image with the files provide from Github repo.
+## Build the image with the files provided from Github repo.
 #### cd iperf
 #### oc start-build iperf --from-dir=. --follow --wait
 
-## Create the new app using the build we created earlier
+## Create new app using the build we created earlier
 #### oc new-app iperf --name iperf-server
 #### oc new-app iperf --name iperf-client
 
