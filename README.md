@@ -1,24 +1,24 @@
 # iperf
 
-Clone the repository to your local machine
-# git clone https://github.com/mafzal786/iperf.git
+## Clone the repository to your local machine
+#### git clone https://github.com/mafzal786/iperf.git
 
-Login to openshift using oc login or exporting kubeconfig file and create a new project named "iperf"
-# oc new-project iperf
+## Login to openshift using oc login or exporting kubeconfig file and create a new project named "iperf"
+#### oc new-project iperf
 
-Create a new build configuration by running the following
-# oc new-build --name iperf --binary
+## Create a new build configuration by running the following
+#### oc new-build --name iperf --binary
 
-Build the image with the files provide from Github repo.
-# cd iperf
-# oc start-build iperf --from-dir=. --follow --wait
+## Build the image with the files provide from Github repo.
+#### cd iperf
+#### oc start-build iperf --from-dir=. --follow --wait
 
-Create the new app using the build we created earlier
-# oc new-app iperf --name iperf-server
-# oc new-app iperf --name iperf-client
+## Create the new app using the build we created earlier
+#### oc new-app iperf --name iperf-server
+#### oc new-app iperf --name iperf-client
 
 
-Get the list of PODs created
+## Get the list of PODs created
 
 [root@e26-linuxjb iperf]# oc get pods -o wide
 NAME                            READY   STATUS      RESTARTS   AGE     IP             NODE                             NOMINATED NODE   READINESS GATES
@@ -29,14 +29,14 @@ iperf-server-599c7797c8-pf5hr   1/1     Running     0          2m14s   10.254.3.
 [root@e26-linuxjb iperf]#
   
   
-Initiate iperf server in iperf-server POD
-[root@e26-linuxjb iperf]# oc exec -it iperf-server-599c7797c8-pf5hr -- iperf3 -i 5 -s
+## Initiate iperf server in iperf-server POD
+#### [root@e26-linuxjb iperf]# oc exec -it iperf-server-599c7797c8-pf5hr -- iperf3 -i 5 -s
 -----------------------------------------------------------
 Server listening on 5201
 -----------------------------------------------------------
   
-Initial iperf client in iperf-client POD
-[root@e26-linuxjb ocp-install2]# oc exec -it iperf-client-656f77f666-bvtrp -- iperf3 -i 5 -t 60 -c $(oc get pod iperf-server-599c7797c8-pf5hr -o jsonpath='{.status.podIP}')
+## Initiate iperf client in iperf-client POD
+#### [root@e26-linuxjb ocp-install2]# oc exec -it iperf-client-656f77f666-bvtrp -- iperf3 -i 5 -t 60 -c $(oc get pod iperf-server-599c7797c8-pf5hr -o jsonpath='{.status.podIP}')
 Connecting to host 10.254.3.217, port 5201
 [  5] local 10.254.3.219 port 51912 connected to 10.254.3.217 port 5201
 [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
