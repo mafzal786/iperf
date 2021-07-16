@@ -19,7 +19,7 @@
 
 
 ## Get the list of PODs created
-
+``
 [root@e26-linuxjb iperf]# oc get pods -o wide
 NAME                            READY   STATUS      RESTARTS   AGE     IP             NODE                             NOMINATED NODE   READINESS GATES
 iperf-1-build                   0/1     Completed   0          9m44s   10.254.3.214   worker1.sjc02-cdip.cisco.local   <none>           <none>
@@ -27,7 +27,7 @@ iperf-74c985c9f8-wjxqv          1/1     Running     0          114s    10.254.3.
 iperf-client-656f77f666-bvtrp   1/1     Running     0          55s     10.254.3.219   worker1.sjc02-cdip.cisco.local   <none>           <none>
 iperf-server-599c7797c8-pf5hr   1/1     Running     0          2m14s   10.254.3.217   worker1.sjc02-cdip.cisco.local   <none>           <none>
 [root@e26-linuxjb iperf]#
-  
+``  
   
 ## Initiate iperf server in iperf-server POD
 #### [root@e26-linuxjb iperf]# oc exec -it iperf-server-599c7797c8-pf5hr -- iperf3 -i 5 -s
